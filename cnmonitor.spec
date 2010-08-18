@@ -1,18 +1,20 @@
 
-%define		_subver	4
+%define		_subver	3
 Summary:	Directory Server Monitoring application
 Name:		cnmonitor
-Version:	1.0.1
+Version:	1.3
 Release:	0.%{_subver}.1
 License:	GPL
 Group:		Applications/WWW
-Source0:	http://dl.sourceforge.net/project/cnmonitor/CN%3DMonitor/1.0.1/%{name}-%{version}-4.tgz
-# Source0-md5:	570ad8a6f7174be21e9c92cbf6a620dd
+Source0:	http://dl.sourceforge.net/project/cnmonitor/CN%3DMonitor/%{version}/%{name}-%{version}-%{_subver}.tgz
+# Source0-md5:	e8db79806c5a02d000b2dbf553c4e0b4
 URL:		http://cnmonitor.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	webapps
 Requires(triggerpostun):	sed >= 4.0
 Requires:	webserver(php)
+Requires:	php-cli
+Requires:	php-gd
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -44,7 +46,7 @@ cp -a config $RPM_BUILD_ROOT%{_sysconfdir}
 cp -a conf/httpd/cnmonitor.conf $RPM_BUILD_ROOT%{_sysconfdir}/apache.conf
 cp -a conf/httpd/cnmonitor.conf $RPM_BUILD_ROOT%{_sysconfdir}/httpd.conf
 cp -a lighttpd.conf $RPM_BUILD_ROOT%{_sysconfdir}/lighttpd.conf
-ln -s %{_sysconfdir} $RPM_BUILD_ROOT%{_appdir}/config
+ln -s %{_sysconfdir}/config $RPM_BUILD_ROOT%{_appdir}/config
 
 %triggerin -- apache1 < 1.3.37-3, apache1-base
 %webapp_register apache %{_webapp}
