@@ -1,12 +1,13 @@
 
-%define		_subver	3
+%define		subver	3
 Summary:	Directory Server Monitoring application
+Summary(pl.UTF-8):	Aplikacja do monitorowania usług katalogowych
 Name:		cnmonitor
 Version:	1.3
-Release:	0.%{_subver}.1
+Release:	0.%{subver}.1
 License:	GPL
 Group:		Applications/WWW
-Source0:	http://dl.sourceforge.net/project/cnmonitor/CN%3DMonitor/%{version}/%{name}-%{version}-%{_subver}.tgz
+Source0:	http://downloads.sourceforge.net/cnmonitor/%{name}-%{version}-%{subver}.tgz
 # Source0-md5:	e8db79806c5a02d000b2dbf553c4e0b4
 URL:		http://cnmonitor.sourceforge.net/
 BuildRequires:	rpmbuild(macros) >= 1.268
@@ -26,6 +27,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Directory Server Monitoring application. The idea is to monitor entire
 small to large scaled deployed directory server environments.
+
+%description -l pl.UTF-8
+CN=Monitor to aplikacja do monitorowania usług katalogowych. Celem
+jest monitorowanie całych środowisk z serwerami usług katalogowych,
+skalujących się od małych do dużych.
 
 %prep
 %setup -q -n %{name}
